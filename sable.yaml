@@ -1,4 +1,19 @@
 rules:
-  - match: sendTextEmail
-    outcome: NOT_VALID
+  - match: sendtextemail
+    match_type: contains
+    outcome: ESCALATED
+    reason: outbound_email_requires_review
+  - match: sendhtmlemail
+    match_type: contains
+    outcome: ESCALATED
+    reason: outbound_email_requires_review
+  - match: deleteemailsbyid
+    match_type: contains
+    outcome: RESTRICTED
+    reason: destructive_email_action_irreversible
+  - match: getemailsbyid
+    match_type: contains
+    outcome: APPROVED
+    reason: read_only_email_retrieval
+    require_record: true
 
